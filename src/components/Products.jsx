@@ -26,10 +26,10 @@ export const Products = () => {
         <div>
           <Link to={`/productitem/${item.id}`}>
             <Stack onClick={() => handleProduct(item.id)} w="270px" h="450px"  border="3px solid black" display="flex" justifyContent="center" alignItems="center">
-          <Text fontSize="medium" fontWeight="bold">Brand: {item.brand}</Text>
-          <Text fontSize="medium" fontWeight="bold">Title: {item.title}</Text>
+          <Text fontSize="medium" fontWeight="bold">BRAND: {item.brand}</Text>
+          <Text fontSize="medium" fontWeight="bold">TITLE: {item.title}</Text>
           <div><img src={item.image} w="150px" h="150px" alt="/" /></div>
-          <Text fontSize="medium" fontWeight="bold">Category: {item.category}</Text>
+          <Text fontSize="medium" fontWeight="bold">CATEGORY: {item.category}</Text>
           </Stack>
           </Link>
           </div>
