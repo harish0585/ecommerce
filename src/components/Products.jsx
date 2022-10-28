@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { getApiData } from '../redux/actions';
+import { Flex, Stack, useMediaQuery, Text, Button } from "@chakra-ui/react";
 
 export const Products = () => {
   const {data} = useSelector(state => state.data)
@@ -17,24 +18,23 @@ export const Products = () => {
   const handleProduct = (id) => {
     console.log(id, "harishID")
   }
+  const [isNotSmallScreen] = useMediaQuery("(min-width:600px)");
 
   return (
-    <>
-    <div>
+    <Flex direction={isNotSmallScreen ? "row" : "column"} width="100%" gap="40px" justifyContent="center" alignItems="center" marginTop="20px">
       {data && data?.map((item) => (
         <div>
           <Link to={`/productitem/${item.id}`}>
-            <div onClick={() => handleProduct(item.id)} style={{border:"2px solid blue"}}>
-          <div>{item.brand}</div>
-          <div>{item.title}</div>
-          <div><img src={item.image} alt="/" /></div>
-          <div>{item.category}</div>
-          </div>
+            <Stack onClick={() => handleProduct(item.id)} w="270px" h="450px"  border="3px solid black" display="flex" justifyContent="center" alignItems="center">
+          <Text fontSize="medium" fontWeight="bold">Brand: {item.brand}</Text>
+          <Text fontSize="medium" fontWeight="bold">Title: {item.title}</Text>
+          <div><img src={item.image} w="150px" h="150px" alt="/" /></div>
+          <Text fontSize="medium" fontWeight="bold">Category: {item.category}</Text>
+          </Stack>
           </Link>
           </div>
       ))}
-    </div>
-    </>
+    </Flex>
   )
 }
 
